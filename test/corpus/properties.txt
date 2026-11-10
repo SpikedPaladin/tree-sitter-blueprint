@@ -1,0 +1,432 @@
+=====
+Values
+=====
+
+$CustomObject {
+    prop1: "Text";
+    prop2: _("Translated");
+    prop3: C_("here", "Custom");
+
+    count1: +123;
+    count2: -321;
+    count3: 0x234;
+
+    switch: true;
+
+    child: link;
+
+    type: typeof <$CustomObject2>;
+
+    flags: first | second;
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_external
+        (type_name_short
+          name: (identifier))))
+    (object_content
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (quoted_literal
+              value: (string
+                (string_fragment))))))
+      (property
+        name: (identifier)
+        (value
+          (translated
+            string: (string
+              (string_fragment)))))
+      (property
+        name: (identifier)
+        (value
+          (translated
+            context: (string
+              (string_fragment))
+            string: (string
+              (string_fragment)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (number_literal
+              value: (number)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (number_literal
+              value: (number)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (number_literal
+              value: (number)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (ident_literal
+              ident: (identifier)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (ident_literal
+              ident: (identifier)))))
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (type_literal
+              (type
+                (type_name_external
+                  (type_name_short
+                    name: (identifier))))))))
+      (property
+        name: (identifier)
+        (value
+          (flags
+            first: (identifier)
+            rest: (identifier)))))))
+
+=====
+Array values and optional block semicolons
+=====
+
+$CustomObject {
+    labels: ["first", _("second"), "third",]
+    child: Button {}
+    menu: menu {}
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_external
+        (type_name_short
+          name: (identifier))))
+    (object_content
+      (property
+        name: (identifier)
+        (array_value
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment))))
+          (string_value
+            (translated
+              string: (string
+                (string_fragment))))
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment))))))
+      (property
+        name: (identifier)
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content)))
+      (property
+        name: (identifier)
+        (menu_declaration)))))
+
+=====
+Unicode escape sequences
+=====
+
+Label {
+    label: "Smile: \U0001F600";
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (quoted_literal
+              value: (string
+                (string_fragment)
+                (escape_sequence)))))))))
+
+=====
+Menu
+=====
+
+$CustomObject {
+    menu: menu {
+        section {}
+        submenu {}
+
+        item {
+            prop1: "1";
+        }
+
+        item("1")
+    };
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_external
+        (type_name_short
+          name: (identifier))))
+    (object_content
+      (property
+        name: (identifier)
+        (menu_declaration
+          (menu_section)
+          (menu_submenu)
+          (menu_item
+            (menu_attribute
+              name: (identifier)
+              (string_value
+                (quoted_literal
+                  value: (string
+                    (string_fragment))))))
+          (menu_item_shorthand
+            (string_value
+              (quoted_literal
+                value: (string
+                  (string_fragment))))))))))
+
+=====
+Object
+=====
+
+$CustomObject {
+    child: $CustomObject2 {};
+
+    link: Button {};
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_external
+        (type_name_short
+          name: (identifier))))
+    (object_content
+      (property
+        name: (identifier)
+        (object
+          (type
+            (type_name_external
+              (type_name_short
+                name: (identifier))))
+          (object_content)))
+      (property
+        name: (identifier)
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content))))))
+
+=====
+Object signals
+=====
+
+Button button {
+    clicked => $on_button_clicked();
+
+    GestureClick {
+        released => $on_click(button) after;
+    }
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    id: (identifier)
+    (object_content
+      (signal
+        name: (identifier)
+        handler: (identifier))
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content
+            (signal
+              name: (identifier)
+              handler: (identifier)
+              object: (identifier)
+              (signal_flag))))))))
+
+=====
+ExprValue
+=====
+
+BoolFilter {
+  expression: expr item as <$UserAccount>.active;
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (expr_value
+          (expression
+            (literal
+              (ident_literal
+                ident: (identifier)))
+            (cast_expression
+              (type
+                (type_name_external
+                  (type_name_short
+                    name: (identifier)))))
+            (lookup_expression
+              property: (identifier))))))))
+
+=====
+Simple binding
+=====
+
+Button {
+    label: bind template.label no-sync-create;
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (binding
+          (expression
+            (literal
+              (ident_literal
+                ident: (identifier)))
+            (lookup_expression
+              property: (identifier)))
+          (binding_flag))))))
+
+=====
+Translated binding?
+=====
+
+Button {
+    label: bind _("Translated");
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (binding
+          (expression
+            (translated
+              string: (string
+                (string_fragment)))))))))
+
+=====
+Try expression
+=====
+
+Button {
+    label: bind try { template.account.username, "Guest" };
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (binding
+          (expression
+            (try_expression
+              (expression
+                (literal
+                  (ident_literal
+                    ident: (identifier)))
+                (lookup_expression
+                  property: (identifier))
+                (lookup_expression
+                  property: (identifier)))
+              (expression
+                (literal
+                  (quoted_literal
+                    value: (string
+                      (string_fragment))))))))))))
+
+=====
+Closure
+=====
+
+Button {
+    label: bind $get_button_label(template.account) as <string>;
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (binding
+          (expression
+            (closure_expression
+              name: (identifier)
+              (expression
+                (literal
+                  (ident_literal
+                    ident: (identifier)))
+                (lookup_expression
+                  property: (identifier))))
+            (cast_expression
+              (type
+                (type_name_short
+                  name: (identifier))))))))))

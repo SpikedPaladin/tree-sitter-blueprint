@@ -1,0 +1,511 @@
+=====
+Accessibility
+=====
+
+Image {
+    accessibility {
+        description: _("Text");
+        controls: [ btn1, btn2 ];
+    }
+}
+
+Button btn1 {}
+
+Button Btn2 {}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (accessibility_definition
+        (accessibility_property
+          name: (identifier)
+          (value
+            (translated
+              string: (string
+                (string_fragment)))))
+        (accessibility_property
+          name: (identifier)
+          (value
+            (literal
+              (ident_literal
+                ident: (identifier))))
+          (value
+            (literal
+              (ident_literal
+                ident: (identifier))))))))
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    id: (identifier)
+    (object_content))
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    id: (identifier)
+    (object_content)))
+
+=====
+Responses
+=====
+
+Adw.AlertDialog {
+    responses [
+        cancel: _("Cancel"),
+        delete: _("Delete") destructive,
+        save: "Save" suggested,
+        wipeHardDrive: "Wipe Hard Drive" destructive disabled,
+    ]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_full
+        namespace: (identifier)
+        name: (identifier)))
+    (object_content
+      (responses_definition
+        (response
+          id: (identifier)
+          (string_value
+            (translated
+              string: (string
+                (string_fragment)))))
+        (response
+          id: (identifier)
+          (string_value
+            (translated
+              string: (string
+                (string_fragment))))
+          (response_flag))
+        (response
+          id: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment))))
+          (response_flag))
+        (response
+          id: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment))))
+          (response_flag)
+          (response_flag))))))
+
+=====
+Breakpoints
+=====
+
+Adw.Breakpoint breakpoint {
+    condition ("max-width: 500sp")
+
+    setters {
+        breakpoint_bin.child: label_narrow;
+        image.icon-size: normal;
+    }
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_full
+        namespace: (identifier)
+        name: (identifier)))
+    id: (identifier)
+    (object_content
+      (condition_definition
+        condition: (string
+          (string_fragment)))
+      (setters_definition
+        (setter
+          object: (identifier)
+          property: (identifier)
+          (value
+            (literal
+              (ident_literal
+                ident: (identifier)))))
+        (setter
+          object: (identifier)
+          property: (identifier)
+          (value
+            (literal
+              (ident_literal
+                ident: (identifier)))))))))
+
+=====
+Items
+=====
+
+ComboBoxText {
+    items [
+        item1: "Item 1",
+        item2: "Item 2",
+        item3: "Item 3",
+    ]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (items_definitions
+        (item
+          id: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))
+        (item
+          id: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))
+        (item
+          id: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))))))
+
+=====
+File filters
+=====
+
+FileFilter {
+    mime-types [ "text/plain", "image/*" ]
+    patterns [ "*.txt" ]
+    suffixes [ "png", "jpg" ]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (mime_types_definition
+        (filter
+          item: (string
+            (string_fragment)))
+        (filter
+          item: (string
+            (string_fragment))))
+      (patterns_definition
+        (filter
+          item: (string
+            (string_fragment))))
+      (suffixes_definition
+        (filter
+          item: (string
+            (string_fragment)))
+        (filter
+          item: (string
+            (string_fragment)))))))
+
+=====
+Layout
+=====
+
+Grid {
+    Button {
+        layout {
+            column: 0;
+            row: 0;
+        }
+    }
+    Button {
+        layout {
+            column: 1;
+            row: 0;
+        }
+    }
+    Button {
+        layout {
+            column: 0;
+            row: 1;
+            row-span: 2;
+        }
+    }
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content
+            (layout_definition
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))))))
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content
+            (layout_definition
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))))))
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content
+            (layout_definition
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number)))))
+              (layout_property
+                name: (identifier)
+                (value
+                  (literal
+                    (number_literal
+                      value: (number))))))))))))
+
+=====
+Offsets
+=====
+
+LevelBar {
+    offsets [
+        offset ("low-class-name", 0.3),
+        offset ("medium-class-name", 0.5),
+        offset ("high-class-name", 0.7),
+    ]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (offsets_definition
+        (offset
+          name: (string
+            (string_fragment))
+          value: (number))
+        (offset
+          name: (string
+            (string_fragment))
+          value: (number))
+        (offset
+          name: (string
+            (string_fragment))
+          value: (number))))))
+
+=====
+Factory
+=====
+
+BuilderListItemFactory {
+    template ListItem {}
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (list_item_factory_declaration
+        (type
+          (type_name_short
+            name: (identifier)))
+        (object_content)))))
+
+=====
+Marks
+=====
+
+Scale {
+    marks [
+        mark (-1, bottom),
+        mark (0, top, _("Origin")),
+        mark (2),
+    ]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (marks_definition
+        (mark
+          value: (number)
+          position: (identifier))
+        (mark
+          value: (number)
+          position: (identifier)
+          (string_value
+            (translated
+              string: (string
+                (string_fragment)))))
+        (mark
+          value: (number))))))
+
+=====
+Widgets
+=====
+
+Box {
+    Button button1 {}
+    Button button2 {}
+}
+
+SizeGroup {
+    widgets [button1, button2]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          id: (identifier)
+          (object_content)))
+      (child
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          id: (identifier)
+          (object_content)))))
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (widgets_definition
+        (widget
+          id: (identifier))
+        (widget
+          id: (identifier))))))
+
+=====
+StringList
+=====
+
+StringList {
+    strings ["violin", "guitar", _("harp")]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (strings_definition
+        (string_list_item
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))
+        (string_list_item
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))
+        (string_list_item
+          (string_value
+            (translated
+              string: (string
+                (string_fragment)))))))))
+
+=====
+Styles
+=====
+
+Button {
+    styles ["suggested-action"]
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (styles_definition
+        (styles_property
+          name: (string
+            (string_fragment)))))))

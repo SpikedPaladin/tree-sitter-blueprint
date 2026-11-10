@@ -1,0 +1,272 @@
+=====
+Using directives
+=====
+
+using Gtk 4.0;
+using Adw 1;
+
+---
+
+(source_file
+  (using_directive
+    namespace: (identifier)
+    version: (number))
+  (using_directive
+    namespace: (identifier)
+    version: (number)))
+
+=====
+Translation domain
+=====
+
+translation-domain "libadwaita";
+
+---
+
+(source_file
+  (translation_domain
+    domain: (string
+      (string_fragment))))
+
+=====
+Template
+=====
+
+template $CustomWidget : Box {
+    orientation: horizontal;
+
+    Adw.Bin {}
+}
+
+template $Custom.Object {
+    prop1: "1";
+
+    $CustomChild {}
+}
+
+---
+
+(source_file
+  (template_declaration
+    (type
+      (type_name_external
+        (type_name_short
+          name: (identifier))))
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (ident_literal
+              ident: (identifier)))))
+      (child
+        (object
+          (type
+            (type_name_full
+              namespace: (identifier)
+              name: (identifier)))
+          (object_content)))))
+  (template_declaration
+    (type
+      (type_name_external
+        (type_name_full
+          namespace: (identifier)
+          name: (identifier))))
+    (object_content
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (quoted_literal
+              value: (string
+                (string_fragment))))))
+      (child
+        (object
+          (type
+            (type_name_external
+              (type_name_short
+                name: (identifier))))
+          (object_content))))))
+
+=====
+Menus
+=====
+
+menu menu_id {
+    section section_id {}
+    section {
+        item("1", "2", "3")
+    }
+    submenu submenu_id {}
+    submenu {
+        item {
+            prop1: "1";
+            prop2: _("2");
+        }
+    }
+}
+
+---
+
+(source_file
+  (menu_declaration
+    id: (identifier)
+    (menu_section
+      id: (identifier))
+    (menu_section
+      (menu_item_shorthand
+        (string_value
+          (quoted_literal
+            value: (string
+              (string_fragment))))
+        (string_value
+          (quoted_literal
+            value: (string
+              (string_fragment))))
+        (string_value
+          (quoted_literal
+            value: (string
+              (string_fragment))))))
+    (menu_submenu
+      id: (identifier))
+    (menu_submenu
+      (menu_item
+        (menu_attribute
+          name: (identifier)
+          (string_value
+            (quoted_literal
+              value: (string
+                (string_fragment)))))
+        (menu_attribute
+          name: (identifier)
+          (string_value
+            (translated
+              string: (string
+                (string_fragment)))))))))
+
+=====
+Object child types
+=====
+
+HeaderBar {
+    [start]
+    Button {}
+
+    [end]
+    Button {}
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (child
+        (child_annotation
+          (child_type
+            child_type: (identifier)))
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content)))
+      (child
+        (child_annotation
+          (child_type
+            child_type: (identifier)))
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content))))))
+
+=====
+Object child action
+=====
+
+Dialog {
+  [action response=cancel]
+  Button {}
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (child
+        (child_annotation
+          (action_annotation
+            name: (identifier)))
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content))))))
+
+=====
+Object internal child
+=====
+
+Dialog {
+  [internal-child content_area]
+  Box {}
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (child
+        (child_annotation
+          (child_internal
+            internal_child: (identifier)))
+        (object
+          (type
+            (type_name_short
+              name: (identifier)))
+          (object_content))))))
+
+=====
+Comments
+=====
+
+Button {
+    label: "1"; // Description
+    /*
+    multi
+    line
+    comment
+    */
+}
+
+---
+
+(source_file
+  (object
+    (type
+      (type_name_short
+        name: (identifier)))
+    (object_content
+      (property
+        name: (identifier)
+        (value
+          (literal
+            (quoted_literal
+              value: (string
+                (string_fragment))))))
+      (comment)
+      (comment))))
